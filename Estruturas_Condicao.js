@@ -45,3 +45,9 @@ else{
         console.log("O aluno não atingiu");
     }
 }
+/* OUTRO EXEMPLO COM OPERADOR TERNARIO 
+    var idade,eleitor;
+    idade = 25;
+    eleitor = (idade < 18) ? "Não é eleitor" : "Sim é eleitor";
+    console.log(eleitor);
+*/
