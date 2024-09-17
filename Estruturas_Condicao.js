@@ -7,8 +7,8 @@ const input = require('prompt-sync')({sigint:true});
  * também cria 3 variaveis e pega os dados pelo teclado
  */
 let nota1 = parseFloat(input("digite a nota do 1° semestre: "));
-let nota2 = parseFloat(input("Digite a nota do 2° semnestre: "));
-let nota3 = parseFloat(input("Digite a nota do 3° semnestre: "));
+let nota2 = parseFloat(input("Digite a nota do 2° semestre: "));
+let nota3 = parseFloat(input("Digite a nota do 3° semestre: "));
 /** Executa as operações matemáticas
  * 
  */
