@@ -2,52 +2,48 @@
     É necessário também instalar pelo gerenciador de pacotes "npm install prompt-sync"
     no diretório do arquivo com terminal bash 
 */
-const teclado = require('prompt-sync')({sigint:true});
+const input = require('prompt-sync')({sigint:true});
 /** Cast para float pro script tratar numeros com virgula
- * também cria duas variaveis e pega os dados pelo teclado
+ * também cria 3 variaveis e pega os dados pelo teclado
  */
-let num1 = parseFloat(teclado("digite a nota 1: "));
-let num2 = parseFloat(teclado("Digite a nota 2: "));
+let nota1 = parseFloat(input("digite a nota do 1° semestre: "));
+let nota2 = parseFloat(input("Digite a nota do 2° semnestre: "));
+let nota3 = parseFloat(input("Digite a nota do 3° semnestre: "));
 /** Executa as operações matemáticas
  * 
  */
-let resultado = (num1 + num2) / 2;
+let resultado = (nota1 + nota2 + nota3) / 3;
 
 /** Tomada de decisões no código */
-if(resultado >= 7.0)
-{
+if(resultado >= 7.0){
     /** Se o aluno estiver aprovado da um bonus de 1 ponto */
     resultado++;
-    console.log("Aprovado");
-    console.log(resultado);
+    console.log("média do aluno: " +resultado.toFixed(2)+ " APROVADO!");
 }
 else if(resultado == 0){
-    /** se aluno tiro zero e pq não estudo */
-    console.log("Você não estudou");
+    /** se aluno tiro zero e pq não não está apto a realizar recuperação */
+    console.log("REPROVADO! Você não estudou o mínimo, não está apto a realizar recuperação!");
 }
 else{
     /** se o aluno esta reprovado pode inserir a recuperação */
-    console.log("Reprovado");
-    console.log(resultado);
-    console.log("Insira a nota da recuperação: ");
-    /** Um aluno para ser aprovado pela recuperação precisa ter tirado no
-     * minimo 4 nas promeiras provas
+    console.log("média do aluno: " +resultado.toFixed(2)+" REPROVADO!");
+
+    /** Um aluno para ser apto a realizar a recuperação, precisa ter tirado no
+     * entre 4.5 e 5.5 e nas somas das notas dos 3 semestres.
      */
-    if(num1 > 4 && num2 > 4){
-        let Recuperacao = parseFloat(teclado("digite a nota da recuperação: "));
-        resultado = Recuperacao;
-        /**Se o aluno tirou nota superior a 7 na recuperacao */
-        if(Recuperacao >= 7){
-            console.log("Aprovado");
-            console.log(resultado);
+    if(resultado>=4.5 && resultado<=5.5){
+        console.log("Aluno apto a realizar a prova de recuperação!")
+        let recuperacao = parseFloat(input("digite a nota da recuperação: "));
+        
+        /** Um aluno para ser aprovado pela recuperação, precisa ter tirado no
+        minimo 6 na nota da recuperação.
+         */
+        if(recuperacao >= 6){
+            console.log("média do aluno: " +recuperacao.toFixed(2)+" APROVADO!");
         }
-    }else{
-        console.log("O aluno não atingiu");
+        else{
+            console.log("média do aluno: " +recuperacao.toFixed(2)+ " REPRVADO! O aluno não atingiu!");
+        }
     }
 }
-/* OUTRO EXEMPLO COM OPERADOR TERNARIO 
-    var idade,eleitor;
-    idade = 25;
-    eleitor = (idade < 18) ? "Não é eleitor" : "Sim é eleitor";
-    console.log(eleitor);
-*/
+
